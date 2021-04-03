@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        .topbar {
+            background-color: white;
+            height: 100px;
+            width: 600px;
+            text-align: center;
+            color: orange;
+            font-family: "Lucida Console", "Courier New", monospace;
+        }
+
+        .quiz {
+            background-color: white;
+            height: 150px;
+            width: 600px;
+            text-align: center;
+            color: blue;
+            font-family: "Lucida Console", "Courier New", monospace;
+            font-size: 60px;
+        }
+
+        .play {
+            background-color: white;
+            text-align: center;
+            height: 450px;
+            width: 600px;
+        }
+
+        .button {
+            width: 100px;
+            height: 100px;
+            border-style: solid;
+            border-color: white;
+        }
+
+        .main {
+            /*background-color: green;*/
+            height: 800px;
+            width: 600px;
+            border: limegreen;
+            border-style: solid;
+            border-width: 2px;
+        }
+
+        button:focus {
+            outline: none;
+        }
+
+        button:active {
+            box-shadow: 0 5px #666;
+            transform: translateY(4px);
+        }
+    </style>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="main">
+
+    <div class="topbar" id="message">
+        <h1>Quiz starts！</h1>
+    </div>
+    <div class="quiz" id="quiz">
+<!--        <h1>3 + 2 = ?</h1>-->
+    </div>
+    <div class="play">
+
+        <span>
+            <button class="button" id="1"
+                    onclick="check_answer(this.id)"
+                    style="background: url(images/number1.png); background-size: contain;"></button>
+            <button class="button" id="2"
+                    onclick="check_answer(this.id)"
+                    style="background: url(images/number2.png); background-size: contain;"></button>
+            <button class="button" id="3"
+                    onclick="check_answer(this.id)"
+                    style="background: url(images/number3.png); background-size: contain;"></button>
+        </span>
+        <div>
+            <button class="button" id="4"
+                    onclick="check_answer(this.id)"
+                    style="background: url(images/number4.png); background-size: contain;"></button>
+            <button class="button" id="5"
+                    onclick="check_answer(this.id)"
+                    style="background: url(images/number5.png); background-size: contain;"></button>
+            <button class="button" id="6"
+                    onclick="check_answer(this.id)"
+                    style="background: url(images/number6.png); background-size: contain;"></button>
+        </div>
+        <div>
+            <button class="button" id="7"
+                    onclick="check_answer(this.id)"
+                    style="background: url(images/number7.png); background-size: contain;"></button>
+            <button class="button" id="8"
+                    onclick="check_answer(this.id)"
+                    style="background: url(images/number8.png); background-size: contain;"></button>
+            <button class="button" id="9"
+                    onclick="check_answer(this.id)"
+                    style="background: url(images/number9.png); background-size: contain;"></button>
+        </div>
+        <div>
+            <button class="button" id="0"
+                    onclick="check_answer(this.id)"
+                    style="background: url(images/number0.png); background-size: contain;"></button>
+        </div>
+    </div>
+    <script>
+        var left, right;
+        new_quiz();
+        function new_quiz() {
+            left = Math.floor((Math.random() * 4) + 1);
+            right = Math.floor((Math.random() * 4) + 1);
+            document.getElementById("quiz").innerHTML = left.toString() + " + " + right.toString() + "  = ?";
+        }
+
+        function check_answer(buttonID) {
+            var rslt;
+            rslt = left + right;
+            if (rslt === parseInt(buttonID)) {
+                // document.getElementById("message").innerHTML = "Good!";
+                document.getElementById("message").innerHTML = "<span style='color: green; font-size: 60px'>Good!</span>";
+                new_quiz();
+            } else {
+                document.getElementById("message").innerHTML = "<span style='color: red; font-size: 60px'>Sorry, Wrong!</span>";
+                //new_quiz();
+            }
+        }
+    </script>
+</div>
+</body>
+</html>
